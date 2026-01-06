@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     dedupe: ['react', 'react-dom'],
   },
+  base: '/',
   build: {
     // Optimize build performance
     minify: 'esbuild', // Faster than terser
@@ -16,13 +17,10 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Keep React and React-DOM together - DO NOT split them
-          // This is critical to prevent "Cannot set properties of undefined" errors
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
-            return 'react-vendor';
-          }
-          // Put react-router-dom in react-vendor chunk (depends on React)
-          if (id.includes('node_modules/react-router')) {
+          // Keep all React-related packages together to prevent bundling errors
+          if (id.includes('node_modules/react') || 
+              id.includes('node_modules/react-dom') ||
+              id.includes('node_modules/react-router')) {
             return 'react-vendor';
           }
           // Put recharts in its own chunk
