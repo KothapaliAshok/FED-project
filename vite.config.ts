@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react-swc'
+import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -38,10 +38,6 @@ export default defineConfig({
             return 'vendor';
           }
         },
-        // Ensure proper module format for React
-        format: 'es',
-        // Preserve module structure
-        preserveModules: false,
       },
     },
     // Increase chunk size warning limit
