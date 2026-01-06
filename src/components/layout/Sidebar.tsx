@@ -12,7 +12,7 @@ import {
   UserCircle,
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
-import { UserRole } from '../../types';
+import type { UserRole } from '../../types';
 
 interface MenuItem {
   path: string;

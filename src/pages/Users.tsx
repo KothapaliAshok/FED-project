@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Users, UserPlus, Edit, Trash2, Shield, BookOpen } from 'lucide-react';
+import { UserPlus, Edit, Trash2 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
-import { User, UserRole } from '../types';
+import type { User, UserRole } from '../types';
 
 export default function Users() {
   const { user: currentUser } = useAuthStore();
@@ -152,7 +152,7 @@ export default function Users() {
                   ...userData,
                   id: `user-${Date.now()}`,
                   createdAt: new Date().toISOString(),
-                },
+                } as User,
               ]);
             }
             setShowAddModal(false);

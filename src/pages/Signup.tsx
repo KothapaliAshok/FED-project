@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BookOpen, Mail, Lock, User, Phone, MapPin } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
-import { UserRole } from '../types';
+import type { UserRole } from '../types';
 
 export default function Signup() {
   const [formData, setFormData] = useState({

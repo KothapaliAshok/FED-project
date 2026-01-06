@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import { Book, BookCopy, BorrowRecord, Reservation, Fine, LibrarySettings } from '../types';
+import type { Book, BookCopy, BorrowRecord, Reservation, Fine, LibrarySettings } from '../types';
 import { generateMockData } from '../services/mockData';
 
 interface LibraryState {

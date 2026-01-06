@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Edit, Trash2, BookOpen, Filter, Calendar } from 'lucide-react';
 import { useLibraryStore } from '../store/libraryStore';
-import { Book } from '../types';
+import type { Book } from '../types';
 import { useAuthStore } from '../store/authStore';
 
 export default function Books() {

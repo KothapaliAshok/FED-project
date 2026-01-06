@@ -1,4 +1,4 @@
-import { Book, BookCopy, BorrowRecord, Reservation, Fine } from '../types';
+import type { Book, BookCopy, BorrowRecord, Reservation, Fine } from '../types';
 
 export function generateMockData() {
   const books: Book[] = [
