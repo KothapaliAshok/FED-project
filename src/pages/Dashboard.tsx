@@ -90,7 +90,15 @@ export default function Dashboard() {
     books: value,
   }));
 
-  const StatCard = ({ icon: Icon, label, value, trend, color = 'primary' }: any) => {
+  interface StatCardProps {
+    icon: React.ComponentType<{ className?: string }>;
+    label: string;
+    value: string | number;
+    trend?: string;
+    color?: 'primary' | 'red';
+  }
+
+  const StatCard = ({ icon: Icon, label, value, trend, color = 'primary' }: StatCardProps) => {
     const bgColorClass = color === 'red' ? 'bg-red-50' : 'bg-primary-50';
     const iconColorClass = color === 'red' ? 'text-red-600' : 'text-primary-600';
     
