@@ -38,6 +38,10 @@ export default defineConfig({
             return 'vendor';
           }
         },
+        // Ensure proper module format for React
+        format: 'es',
+        // Preserve module structure
+        preserveModules: false,
       },
     },
     // Increase chunk size warning limit
