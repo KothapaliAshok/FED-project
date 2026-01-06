@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Users, UserPlus, Edit, Trash2, Shield, BookOpen } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { User, UserRole } from '../types';

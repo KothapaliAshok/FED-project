@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Settings as SettingsIcon, Save, BookOpen, Clock, DollarSign, Users } from 'lucide-react';
 import { useLibraryStore } from '../store/libraryStore';
 

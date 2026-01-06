@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { BookOpen, Users, FileText, AlertCircle, TrendingUp, Calendar } from 'lucide-react';
 import { useLibraryStore } from '../store/libraryStore';
 import { useAuthStore } from '../store/authStore';
@@ -68,7 +68,6 @@ export default function Dashboard() {
     }).length,
   };
 
-  const stats = user?.role === 'student' ? studentStats : adminStats;
 
   const chartData = [
     { name: 'Mon', issues: 12, returns: 8 },
@@ -136,25 +135,25 @@ export default function Dashboard() {
           <StatCard
             icon={BookOpen}
             label="My Borrows"
-            value={stats.myBorrows}
+            value={studentStats.myBorrows}
             color="primary"
           />
           <StatCard
             icon={AlertCircle}
             label="Overdue"
-            value={stats.overdueBooks}
+            value={studentStats.overdueBooks}
             color="red"
           />
           <StatCard
             icon={Calendar}
             label="Due Soon"
-            value={stats.dueSoon}
+            value={studentStats.dueSoon}
             color="red"
           />
           <StatCard
             icon={FileText}
             label="My Reservations"
-            value={stats.myReservations}
+            value={studentStats.myReservations}
             color="primary"
           />
         </div>
@@ -165,7 +164,7 @@ export default function Dashboard() {
               <h3 className="text-lg font-semibold text-neutral-700">My Fines</h3>
               <AlertCircle className="w-5 h-5 text-red-500" />
             </div>
-            <p className="text-3xl font-bold text-neutral-700">${stats.myFines.toFixed(2)}</p>
+            <p className="text-3xl font-bold text-neutral-700">${studentStats.myFines.toFixed(2)}</p>
             <p className="text-sm text-neutral-500 mt-2">Pending payments</p>
           </div>
 
@@ -174,7 +173,7 @@ export default function Dashboard() {
               <h3 className="text-lg font-semibold text-neutral-700">My Reservations</h3>
               <Calendar className="w-5 h-5 text-primary-500" />
             </div>
-            <p className="text-3xl font-bold text-neutral-700">{stats.myReservations}</p>
+            <p className="text-3xl font-bold text-neutral-700">{studentStats.myReservations}</p>
             <p className="text-sm text-neutral-500 mt-2">Active reservations</p>
           </div>
         </div>
@@ -240,26 +239,26 @@ export default function Dashboard() {
         <StatCard
           icon={BookOpen}
           label="Total Books"
-          value={stats.totalBooks}
+          value={adminStats.totalBooks}
           trend={user?.role === 'admin' ? '+12%' : undefined}
           color="primary"
         />
         <StatCard
           icon={FileText}
           label="Active Borrows"
-          value={stats.activeBorrows}
+          value={adminStats.activeBorrows}
           color="primary"
         />
         <StatCard
           icon={AlertCircle}
           label="Overdue Books"
-          value={stats.overdueBooks}
+          value={adminStats.overdueBooks}
           color="red"
         />
         <StatCard
           icon={Calendar}
           label="Today's Issues"
-          value={stats.todayIssues}
+          value={adminStats.todayIssues}
           trend={user?.role === 'admin' ? '+5%' : undefined}
           color="primary"
         />
@@ -327,7 +326,7 @@ export default function Dashboard() {
             <h3 className="text-lg font-semibold text-neutral-700">Reservations</h3>
             <Calendar className="w-5 h-5 text-primary-500" />
           </div>
-          <p className="text-3xl font-bold text-neutral-700">{stats.pendingReservations}</p>
+          <p className="text-3xl font-bold text-neutral-700">{adminStats.pendingReservations}</p>
           <p className="text-sm text-neutral-500 mt-2">Pending requests</p>
         </div>
 
@@ -336,7 +335,7 @@ export default function Dashboard() {
             <h3 className="text-lg font-semibold text-neutral-700">Fines</h3>
             <AlertCircle className="w-5 h-5 text-red-500" />
           </div>
-          <p className="text-3xl font-bold text-neutral-700">${stats.totalFines.toFixed(2)}</p>
+          <p className="text-3xl font-bold text-neutral-700">${adminStats.totalFines.toFixed(2)}</p>
           <p className="text-sm text-neutral-500 mt-2">Pending payments</p>
         </div>
 
@@ -346,7 +345,7 @@ export default function Dashboard() {
             <BookOpen className="w-5 h-5 text-primary-500" />
           </div>
           <p className="text-3xl font-bold text-neutral-700">
-            {stats.availableCopies}/{stats.totalCopies}
+            {adminStats.availableCopies}/{adminStats.totalCopies}
           </p>
           <p className="text-sm text-neutral-500 mt-2">Available copies</p>
         </div>
@@ -360,7 +359,7 @@ export default function Dashboard() {
               <h3 className="text-lg font-semibold text-neutral-700">Today's Returns</h3>
               <FileText className="w-5 h-5 text-primary-500" />
             </div>
-            <p className="text-3xl font-bold text-neutral-700">{stats.todayReturns}</p>
+            <p className="text-3xl font-bold text-neutral-700">{adminStats.todayReturns}</p>
             <p className="text-sm text-neutral-500 mt-2">Books returned today</p>
           </div>
 
