@@ -16,11 +16,12 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Put react and react-dom in their own chunk
+          // Keep React and React-DOM together - DO NOT split them
+          // This is critical to prevent "Cannot set properties of undefined" errors
           if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
             return 'react-vendor';
           }
-          // Put react-router-dom in react-vendor chunk
+          // Put react-router-dom in react-vendor chunk (depends on React)
           if (id.includes('node_modules/react-router')) {
             return 'react-vendor';
           }
@@ -46,6 +47,7 @@ export default defineConfig({
       include: [/node_modules/],
       transformMixedEsModules: true,
       defaultIsModuleExports: true,
+      requireReturnsDefault: 'auto',
     },
   },
   // Optimize dependency pre-bundling
@@ -54,7 +56,6 @@ export default defineConfig({
     esbuildOptions: {
       target: 'esnext',
     },
-    force: true, // Force re-optimization
   },
   define: {
     'process.env.NODE_ENV': JSON.stringify('production'),
